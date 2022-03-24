@@ -47,6 +47,8 @@ for(let i = 1; i < tableTr.length; i++)
     arrDatasets.push(dataCountry);  
 }
 
+console.log(arrDatasets);
+
 // Création du graph
 
 var chart    = document.getElementById('chart').getContext('2d'),
