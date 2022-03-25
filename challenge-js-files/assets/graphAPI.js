@@ -26,7 +26,7 @@ const arrCopied = (arr) => {
 var dataAPI = {
     labels: arrX,
     datasets: [{
-        label: 'YO WTF BRO',
+        label: 'Valeur aléatoire qui change',
         barPercentage: 0.5,
         barThickness: 6,
         maxBarThickness: 8,
