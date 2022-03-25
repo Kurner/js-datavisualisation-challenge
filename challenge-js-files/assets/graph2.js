@@ -22,8 +22,8 @@ for(let x = 0 ; x < tdTable.length ; x++) {
 }
 
 ///// création du graphique
-let ctx = document.getElementById("barCanvas");
-let barChart = new Chart(ctx, {
+let graph2 = document.getElementById("barCanvas");
+let barChart = new Chart(graph2, {
     type: "bar", 
     data: {
         labels: pays,
