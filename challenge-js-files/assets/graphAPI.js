@@ -1,28 +1,67 @@
-
     let arrX = [];
     let arrY = [];
     
     // Obtiens une promesse via une fonction ASYNC
 const fetchData = async () => {
-    const data = await fetch('https://canvasjs.com/services/data/datapoints.php');
+    const data = await fetch('https://canvasjs.com/services/data/datapoints.php', {cache: "no-cache"});
     return await data.json();
 }
 
-    // Lance la fonction du Fetch()
-fetchData().then(res => 
-    {
-        arrCopied(res);
-    });
-
 const arrCopied = (arr) => {
+
+   
+        arr.forEach(elem =>
+            {
+                arrX.pop();
+                arrY.pop();
+            })
+            
     return arr.forEach((elem) => 
     {
         arrX.push(elem[0]);
         arrY.push(elem[1]);
     })
 }
-    console.log(arrX);
-    console.log(arrY);
+
+var dataAPI = {
+    labels: arrX,
+    datasets: [{
+        label: 'YO WTF BRO',
+        barPercentage: 0.5,
+        barThickness: 6,
+        maxBarThickness: 8,
+        minBarLength: 2,
+        data: arrY,
+    }]
+}
+
+const configAPI = {
+    type: 'bar',
+    data: dataAPI,
+    options: {}
+  };
+
+const draw = () => 
+{
+   return new Chart(ctx, configAPI);
+}
+
+var ctx = document.getElementById('graphAPI').getContext('2d');
+
+let launchDraw = draw();
+
+function playChart ()
+{
+    fetchData()
+        .then(res => arrCopied(res))
+        .then(() => launchDraw.destroy())
+        .then(() => launchDraw = draw())
+    
+    setTimeout(playChart, 2000);
+}
+
+playChart();
+
 // let graph = fetch('https://canvasjs.com/services/data/datapoints.php')
 //     .then(function(response)
 //     {

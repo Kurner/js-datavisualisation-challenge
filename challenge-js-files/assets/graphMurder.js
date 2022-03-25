@@ -1,12 +1,11 @@
 // Recolte des données
+let table = document.getElementById('table1');
 
 // Change les données en héxadécimal
 function componentToHex(c) {
     var hex = c.toString(16);
     return hex.length == 1 ? "0" + hex : hex;
 }
-
-let table = document.getElementById('table1');
 
 // On ne prend que le 1er élément du tableau
 let tableBody = document.getElementsByTagName('tbody')[0];
@@ -113,7 +112,7 @@ var options = {
 var chartInstance = new Chart(chart, {
     type: 'line',
     data: data,
-		options: options
+	options: options
 });
 
 
